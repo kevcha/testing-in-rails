@@ -14,4 +14,17 @@ describe Post do
     expect(post.valid?).to eq(false)
     expect(post.errors[:body].present?).to eq(true)
   end
+
+  describe '#published!' do
+    it 'sets post as published' do
+      # initial condition : instance creation, etc.
+      post = Post.create(title: 'Hello world', body: 'lorem ipsum', published: false)
+
+      # execution of what will be test
+      post.publish!
+
+      # expectations
+      expect(post.published?).to eq(true)
+    end
+  end
 end
